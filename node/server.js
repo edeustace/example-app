@@ -1,37 +1,38 @@
 var app, express, fs, port;
 
 fs = require('fs');
+var querystring = require('querystring');
+var http = require('http');
 
 express = require('express');
 app = express();
-
 
 var scores = {};
 
 app.use(express.static(__dirname + '/'));
 
-app.post("/grade", function(req, res){
+app.post("/grade", function (req, res) {
 
-	req.on('data', function(chunk) {
-      console.log("Receiving Post:");
-      var xml = chunk.toString();
-      var sid = xml.match("<sourcedId>(.*?)</sourcedId>")[1];
-		var score = xml.match("<textString>(.*?)</textString>")[1];
-		console.log(sid);
-		console.log(score);
-		scores[sid] = score;
+    req.on('data', function (chunk) {
+        console.log("Receiving Post:");
+        var xml = chunk.toString();
+        var sid = xml.match("<sourcedId>(.*?)</sourcedId>")[1];
+        var score = xml.match("<textString>(.*?)</textString>")[1];
+        console.log(sid);
+        console.log(score);
+        scores[sid] = score;
     });
 
-	res.send("Okay");
+    res.send("Okay");
 });
 
-app.get("/grade", function(req, res) {
-	console.log(req.query);
-	res.send(scores[req.query.id]);
+app.get("/grade", function (req, res) {
+    console.log(req.query);
+    res.send(scores[req.query.id]);
 });
 
 port = process.env.PORT || 8000;
 
-app.listen(port, function() {
-  return console.log("server started");
+app.listen(port, function () {
+    return console.log("server started");
 });

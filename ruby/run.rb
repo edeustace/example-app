@@ -108,10 +108,10 @@ for i in 0..[9, items.length].min
    puts String(i+1)+") "+items[i]['title']
 end
 
-itemId = items[Integer(gets)]['id']
-puts("")
+requestedId = Integer(gets)
+itemId = items[requestedId]['id']
 
-printf("Creating Item Session: ")
+printf("\nCreating Item Session: ")
 sessionId = createItemSession(token, itemId) 
 puts("Done.")
 

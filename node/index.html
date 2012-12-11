@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Sample Application</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -19,8 +19,8 @@
     <!---------------- Step 1 -------------------->
     <div id="step1">
         <h2 class="form-signin-heading">Step 1: Generating Your Access Token</h2>
-        <input id="cid" type="text" class="input-block-level" value="502d46ce0364068384f217a5" placeholder="Client ID">
-        <input id="csec" type="text" class="input-block-level" value="abc123" placeholder="Client Secret">
+        Client ID: <input id="cid" type="text" class="input-block-level" value="502d46ce0364068384f217a5" placeholder="Client ID">
+        Client Secret: <input id="csec" type="text" class="input-block-level" value="abc123" placeholder="Client Secret">
         <button id="s1submit" class="btn btn-large btn-primary">Generate Access Token</button>
         <br/>
         <span class="error" id="s1error"></span>
@@ -55,8 +55,6 @@
         <br/>
         <br/>
         <a class="launcherA" href="#" onclick="launchItem()" target="_blank"><button class="btn btn-small btn-success">Play It</button></a>
-        &nbsp;&nbsp;
-        <a id="ltiLauncherA" href="#" target="_blank"><button class="btn btn-small btn-success">LTI Launch</button></a>
     </div>
 
     <!---------------- Step 5 -------------------->
@@ -66,6 +64,9 @@
         <a href="#" onclick="refreshSessionData()"><button class="btn btn-small btn-success">Refresh</button></a>
         <a class="launcherA" href="#" onclick="launchItem()" target="_blank"><button class="btn btn-small btn-success">Play It</button></a>
         <br/>
+        <br/>
+        Item Session:
+        <br />
         <div class="responseHolder" ng-show="showResponseBox" style="">
           <pre id="responseBox">
               This is going to be populated by the getSessionData result handler
