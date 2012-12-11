@@ -2,10 +2,15 @@ var accessToken;
 var itemId;
 var sessionId;
 
-function collectionClick(id) {
-    $("#step3").fadeIn(500, function () {
-        $("#step2").slideUp();
+
+function goToStep(step) {
+    $("#step"+step).fadeIn(500, function () {
+        $("#step"+(step-1)).slideUp();
     });
+}
+
+function collectionClick(id) {
+    goToStep(3);
     getItems(accessToken, id, function (items) {
         var s = "";
         for (var i = 0; i < items.length; i++) {
@@ -16,10 +21,7 @@ function collectionClick(id) {
 }
 
 function itemClick(id) {
-    $("#step4").fadeIn(500, function () {
-        $("#step3").slideUp();
-    });
-
+    goToStep(4);
     itemId = id;
 
     createItemSession(accessToken, id, function (res) {
@@ -33,16 +35,7 @@ function itemClick(id) {
 }
 
 function launchItem() {
-    $("#step5").fadeIn(500, function () {
-        $("#step4").slideUp();
-    });
-    refreshSessionData();
-}
-
-function launchLtiItem() {
-    $("#step5").fadeIn(500, function () {
-        $("#step4").slideUp();
-    });
+    goToStep(5);
     refreshSessionData();
 }
 
@@ -52,17 +45,17 @@ function refreshSessionData() {
     })
 }
 
-
 $(function () {
+    $("#cid").val(config.clientId);
+    $("#csec").val(config.clientSecret);
+
     $("#s1submit").click(function () {
         requestAccessToken($("#cid").val(), $("#csec").val(),
             function (res) {
                 $("#s1error").html("");
                 accessToken = res;
                 $("#token").html(accessToken);
-                $("#step2").fadeIn(500, function () {
-                    $("#step1").slideUp();
-                });
+                goToStep(2);
 
                 getCollections(accessToken, function (items) {
                     var s = "";
@@ -79,5 +72,4 @@ $(function () {
             }
         )
     });
-
 });
