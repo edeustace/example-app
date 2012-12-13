@@ -19,6 +19,10 @@
     <!---------------- Step 1 -------------------->
     <div id="step1">
         <h2 class="form-signin-heading">Step 1: Generating Your Access Token</h2>
+        <p class="lead">
+            Enter your developer Client ID and Secret for accessing the CoreSpring API. If you don't have one yet - you can <a href="http://www.corespring.org/developer/home">sign up</a> on the CoreSpring site.
+        </p>
+
         Client ID: <input id="cid" type="text" class="input-block-level" placeholder="Client ID">
         Client Secret: <input id="csec" type="text" class="input-block-level" placeholder="Client Secret">
         <button id="s1submit" class="btn btn-large btn-primary">Generate Access Token</button>
@@ -30,9 +34,11 @@
     <!---------------- Step 2 -------------------->
     <div id="step2" style="display: none">
         <h2 class="form-signin-heading">Step 2: Choosing a Collection</h2>
-        The Acces Token you generated in the previous step is: <span id="token" class="token"></span><br/>
-        <br />
-        Now choose a collection from below:<br/>
+        <p class="lead">
+        The Access Token you generated in the previous step is: <span id="token" class="token"></span><br/>
+       
+        Below are the collections available to your organization. Choose one:<br/>
+    </p>
         <ul id="collsList">
 
         </ul>
@@ -42,6 +48,9 @@
     <!---------------- Step 3 -------------------->
     <div id="step3" style="display: none">
         <h2 class="form-signin-heading">Step 3: Choosing an Item</h2>
+        <p class="lead">
+            Here are some items from the selected collection. Click on one you'd like to view:
+        </p>
         <ul id="itemsList">
         </ul>
         <br/><br/>
@@ -50,6 +59,10 @@
     <!---------------- Step 4 -------------------->
     <div id="step4" style="display: none">
         <h2 class="form-signin-heading">Step 4: Creating an Item Session</h2>
+        <p class="lead">
+            An Item Session has been created for the item. Click 'Play It' to launch the Item in a new tab. <br/>
+            The data from the Item Session will load in this window.
+        </p>
         <br/>
         <span id="sessionResult">Could not create item session</span>
         <br/>
@@ -60,6 +73,9 @@
     <!---------------- Step 5 -------------------->
     <div id="step5" style="display: none">
         <h2 class="form-signin-heading">Step 5: Getting Result From Item Session</h2>
+        <p class="lead">
+            The data from the item session is below. Click refresh to update it once the response has been submitted.
+        </p>
         <br/>
         <a href="#" onclick="refreshSessionData()"><button class="btn btn-small btn-success">Refresh</button></a>
         <a class="launcherA" href="#" onclick="launchItem()" target="_blank"><button class="btn btn-small btn-success">Play It</button></a>
