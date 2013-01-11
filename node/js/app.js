@@ -2,7 +2,6 @@ var accessToken;
 var itemId;
 var sessionId;
 
-
 function goToStep(step) {
     $("#step"+step).fadeIn(500, function () {
         $("#step"+(step-1)).slideUp();
@@ -17,7 +16,7 @@ function collectionClick(id) {
             s += "<li onclick=\"itemClick('" + items[i].id + "')\"><a href='#'>" + items[i].title + "</a></li>";
         }
         $("#itemsList").html(s);
-    })
+    });
 }
 
 function itemClick(id) {
@@ -41,7 +40,9 @@ function launchItem() {
 
 function refreshSessionData() {
     getSessionData(accessToken, itemId, sessionId, function (data) {
-        $("#responseBox").html(JSON.stringify(data, undefined, 2));
+
+        var highlighted = com.cs.utils.syntaxHighlightJson(data);
+        $("#responseBox").html(highlighted);
     })
 }
 
